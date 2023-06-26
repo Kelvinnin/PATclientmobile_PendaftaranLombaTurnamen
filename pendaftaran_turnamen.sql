@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 26, 2023 at 05:48 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 7.4.33
+-- Generation Time: Jun 26, 2023 at 10:59 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.0.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +37,9 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`username`, `password`) VALUES
-('kelvin', '123');
+('Albert', '412'),
+('Derick', '456'),
+('Kelvin', '123');
 
 -- --------------------------------------------------------
 
@@ -52,13 +54,6 @@ CREATE TABLE `bracket_individu` (
   `komentar` varchar(45) DEFAULT NULL,
   `idbracketIndiv` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `bracket_individu`
---
-
-INSERT INTO `bracket_individu` (`idpeserta`, `idpeserta1`, `date`, `komentar`, `idbracketIndiv`) VALUES
-(6, 7, '2023-06-08', 'keren', 1);
 
 -- --------------------------------------------------------
 
@@ -79,7 +74,9 @@ CREATE TABLE `bracket_team` (
 --
 
 INSERT INTO `bracket_team` (`team_idteam`, `team_idteam1`, `date`, `komentar`, `idBracketTeam`) VALUES
-(6, 5, '2023-06-14', 'team komen', 1);
+(1, 1, '2022-01-11', NULL, 4),
+(1, 2, '2023-06-27', NULL, 5),
+(1, 2, '2023-06-27', NULL, 6);
 
 -- --------------------------------------------------------
 
@@ -97,8 +94,12 @@ CREATE TABLE `game_individu` (
 --
 
 INSERT INTO `game_individu` (`idgame`, `nama_game`) VALUES
-(18, 'pubg'),
-(19, 'mobile legends');
+(1, 'Clash Royale'),
+(2, 'Tekken'),
+(3, 'Survival.io'),
+(4, 'Genshin Impact'),
+(5, 'NBA 2k20'),
+(6, 'God Of War');
 
 -- --------------------------------------------------------
 
@@ -116,8 +117,11 @@ CREATE TABLE `game_kelompok` (
 --
 
 INSERT INTO `game_kelompok` (`idgame`, `nama_game`) VALUES
-(8, 'tekken'),
-(9, 'dota');
+(1, 'PUBG'),
+(2, 'Valorant'),
+(3, 'Mobile Legends'),
+(4, 'Overwatch'),
+(5, 'Fifa');
 
 -- --------------------------------------------------------
 
@@ -146,8 +150,10 @@ CREATE TABLE `peserta_individu` (
 --
 
 INSERT INTO `peserta_individu` (`idpeserta`, `nama`, `alamat`, `tanggal_lahir`, `no_handphone`, `nrp`, `program_studi`, `angkatan`, `foto_formal`, `win`, `lose`, `game_individu_idgame`, `status`) VALUES
-(6, 'kelvin', 'kelvinalamat', '2023-06-08', '123', '123', 'elektro', '2020', NULL, 0, 0, 19, 0),
-(7, 'justin', 'alamat justin', '2023-06-14', '123', '123', 'sib', '2020', '12', 0, 0, 18, 0);
+(1, 'Justin', 'Gianyar V C6/27', '2002-04-28', '08101010101', 'c11200012', 'Teknik Elektro', '2020', NULL, 0, 0, 1, 1),
+(2, 'Juan F', 'Sidoarjo 01', '2002-05-15', '0820202202', 'c11200013', 'Teknik Elektro', '2020', NULL, 0, 0, 1, 1),
+(3, 'Jeremy', 'Tanjung Priok 02', '2001-09-09', '08103030303', 'c11200001', 'Teknik Elektro', '2021', NULL, 0, 0, 3, 2),
+(4, 'Anthony', 'Tanjung  03', '2001-09-10', '08040404040', 'c11200025', 'Teknik Elektro', '2022', NULL, 0, 0, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -173,8 +179,15 @@ CREATE TABLE `peserta_kelompok` (
 --
 
 INSERT INTO `peserta_kelompok` (`idpeserta`, `nama`, `alamat`, `tanggal_lahir`, `no_handphone`, `nrp`, `program_studi`, `angkatan`, `foto_formal`, `team_idteam`) VALUES
-(7, 'peserta 1', '123', '2023-06-14', '123', '123', '123', '123', '132', 5),
-(8, 'peserta 2', '213', '2023-06-09', '123', '123', '132', '123', '123', 6);
+(1, 'Jacquelyn', 'Juresh 01', '2003-06-26', '087802301929', 'c11200001', 'Teknik Elektro', '2020', NULL, 1),
+(2, 'Jeremy', 'Dukuh 02', '2002-06-12', '087802301929', 'c11200006', 'Teknik Informatika', '2020', NULL, 1),
+(3, 'Christian', 'Citraland 05', '2001-06-22', '087802301929', 'c11200007', 'Industri', '2020', NULL, 1),
+(4, 'Kelvin SH', 'Siwalan 03', '2002-05-14', '087802301929', 'c11200018', 'DKV', '2020', NULL, 2),
+(5, 'Glenn', 'Siwalan 80', '2002-03-13', '087802301929', 'c11200019', 'Teknik Informatika', '2020', NULL, 2),
+(6, 'Julius', 'Dangsir 26', '2002-07-19', '087802301929', 'c11200020', 'DKV', '2020', NULL, 3),
+(7, 'Albert', 'Kencana 27', '2002-09-13', '087802301929', 'c11200035', 'DFT', '2020', NULL, 3),
+(8, 'Derick', 'Dangsir 55', '2002-11-01', '087802301929', 'c11200036', 'Teknik Informatika', '2020', NULL, 4),
+(9, 'Yegia', 'Kutisari 08', '2002-03-06', '087802301929', 'c11200037', 'Mesin', '2020', NULL, 4);
 
 -- --------------------------------------------------------
 
@@ -196,8 +209,10 @@ CREATE TABLE `team` (
 --
 
 INSERT INTO `team` (`idteam`, `nama_team`, `win`, `lose`, `game_kelompok_idgame`, `status`) VALUES
-(5, 'team1', 0, 0, 9, 1),
-(6, 'team2', 0, 0, 8, 1);
+(1, 'GABIMARU', 0, 0, 1, 3),
+(2, 'KECAMBAH', 0, 0, 2, 3),
+(3, 'ULET', 0, 0, 3, 2),
+(4, 'SEMANGAT', 0, 0, 4, 0);
 
 --
 -- Indexes for dumped tables
@@ -272,37 +287,37 @@ ALTER TABLE `bracket_individu`
 -- AUTO_INCREMENT for table `bracket_team`
 --
 ALTER TABLE `bracket_team`
-  MODIFY `idBracketTeam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idBracketTeam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `game_individu`
 --
 ALTER TABLE `game_individu`
-  MODIFY `idgame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `idgame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `game_kelompok`
 --
 ALTER TABLE `game_kelompok`
-  MODIFY `idgame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `idgame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `peserta_individu`
 --
 ALTER TABLE `peserta_individu`
-  MODIFY `idpeserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idpeserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `peserta_kelompok`
 --
 ALTER TABLE `peserta_kelompok`
-  MODIFY `idpeserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idpeserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
-  MODIFY `idteam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idteam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
