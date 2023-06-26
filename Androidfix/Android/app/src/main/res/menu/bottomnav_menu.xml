@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemLeaderboard"
+        android:title="@string/leaderboard" />
+    <item
+        android:id="@+id/itemTeam"
+        android:title="Daftar Team" />
+    <item
+        android:id="@+id/itemIndividu"
+        android:title="Daftar Individu" />
+
+</menu>

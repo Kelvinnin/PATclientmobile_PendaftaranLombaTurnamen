@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2023 at 08:36 PM
+-- Generation Time: Jun 26, 2023 at 05:48 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -37,10 +37,49 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`username`, `password`) VALUES
-('Albert', '111'),
-('Anthony', '333'),
-('Derick', '222'),
-('Juko', '444');
+('kelvin', '123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bracket_individu`
+--
+
+CREATE TABLE `bracket_individu` (
+  `idpeserta` int(11) DEFAULT NULL,
+  `idpeserta1` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `komentar` varchar(45) DEFAULT NULL,
+  `idbracketIndiv` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `bracket_individu`
+--
+
+INSERT INTO `bracket_individu` (`idpeserta`, `idpeserta1`, `date`, `komentar`, `idbracketIndiv`) VALUES
+(6, 7, '2023-06-08', 'keren', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bracket_team`
+--
+
+CREATE TABLE `bracket_team` (
+  `team_idteam` int(11) DEFAULT NULL,
+  `team_idteam1` int(11) DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `komentar` varchar(45) DEFAULT NULL,
+  `idBracketTeam` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `bracket_team`
+--
+
+INSERT INTO `bracket_team` (`team_idteam`, `team_idteam1`, `date`, `komentar`, `idBracketTeam`) VALUES
+(6, 5, '2023-06-14', 'team komen', 1);
 
 -- --------------------------------------------------------
 
@@ -58,13 +97,8 @@ CREATE TABLE `game_individu` (
 --
 
 INSERT INTO `game_individu` (`idgame`, `nama_game`) VALUES
-(1, 'Tekken'),
-(2, 'Gran Turismo'),
-(3, 'PES'),
-(4, 'Roboto'),
-(5, 'Fruit Ninja'),
-(15, 'minecraft'),
-(16, 'fifa');
+(18, 'pubg'),
+(19, 'mobile legends');
 
 -- --------------------------------------------------------
 
@@ -82,12 +116,8 @@ CREATE TABLE `game_kelompok` (
 --
 
 INSERT INTO `game_kelompok` (`idgame`, `nama_game`) VALUES
-(1, 'PUBG'),
-(2, 'ML'),
-(3, 'Valorant'),
-(4, 'Arisan'),
-(5, 'dota'),
-(6, 'nba');
+(8, 'tekken'),
+(9, 'dota');
 
 -- --------------------------------------------------------
 
@@ -116,13 +146,8 @@ CREATE TABLE `peserta_individu` (
 --
 
 INSERT INTO `peserta_individu` (`idpeserta`, `nama`, `alamat`, `tanggal_lahir`, `no_handphone`, `nrp`, `program_studi`, `angkatan`, `foto_formal`, `win`, `lose`, `game_individu_idgame`, `status`) VALUES
-(1, 'Kelvin Wilson Utomo', 'Margorejo Indah B-114', '2002-08-30', '085100999900', 'c11200039', 'Teknik Elektro', '2020', NULL, 3, 0, 1, 1),
-(2, 'Justin Jones T', 'Gianyar C6/27', '2002-04-28', '081929292', 'c11200012', 'Teknik Elektro', '2020', '', 2, 0, 3, 2),
-(3, 'Juan Felix', 'Sidoarjo 100', '2001-03-09', '085989989898', 'c11200029', 'Teknik Elektro', '2021', NULL, 3, 0, 2, 1),
-(4, 'Kanaka AW', 'Siwalankerto 100', '2001-02-18', '087676767676', 'c11200028', 'Teknik Elektro', '2021', NULL, 4, 0, 1, 2),
-(5, 'Jacquelyn', 'Gianyar C7/28', '2002-05-23', '081929292', 'c11200012', 'Teknik Elektro', '2020', NULL, 4, 0, 3, 1),
-(6, 'coba1', 'coa', '2023-12-12', '08123456', '123', 'manuf', '2019', NULL, 0, 0, 2, 0),
-(7, 'hai', 'margo', '2022-01-01', '0812345', 'undefined', 'elektro', '2021', NULL, 0, 0, 5, 0);
+(6, 'kelvin', 'kelvinalamat', '2023-06-08', '123', '123', 'elektro', '2020', NULL, 0, 0, 19, 0),
+(7, 'justin', 'alamat justin', '2023-06-14', '123', '123', 'sib', '2020', '12', 0, 0, 18, 0);
 
 -- --------------------------------------------------------
 
@@ -148,13 +173,8 @@ CREATE TABLE `peserta_kelompok` (
 --
 
 INSERT INTO `peserta_kelompok` (`idpeserta`, `nama`, `alamat`, `tanggal_lahir`, `no_handphone`, `nrp`, `program_studi`, `angkatan`, `foto_formal`, `team_idteam`) VALUES
-(1, 'Kanaka', 'Siwalankerto 100', '2002-01-24', '0851616161', 'c11200022', 'Teknik Elektro', '2020', NULL, 1),
-(2, 'Juan', 'Sidoarjo 01', '2002-02-23', '0851717171', 'c11200023', 'Teknik Elektro', '2020', NULL, 1),
-(3, 'Jovan', 'Sidoarjo 02', '2002-03-24', '0851818181', 'c11200024', 'Teknik Elektro', '2020', NULL, 1),
-(4, 'Gorila', 'Gianyar C6/27', '2002-04-28', '081929292', 'c11200012', 'Teknik Elektro', '2020', '', 2),
-(5, 'Jacquelyn', 'Gianyar C7/28', '2002-05-23', '081929292', 'c11200012', 'Teknik Elektro', '2020', NULL, 2),
-(7, 'gwen', 'pucang', '2021-11-11', '123', '1233', 'elektro', '2021', NULL, 1),
-(8, 'cobanaggota', 'coba', '2011-01-01', '123456', '123', 'SIB', '2015', NULL, 7);
+(7, 'peserta 1', '123', '2023-06-14', '123', '123', '123', '123', '132', 5),
+(8, 'peserta 2', '213', '2023-06-09', '123', '123', '132', '123', '123', 6);
 
 -- --------------------------------------------------------
 
@@ -168,21 +188,16 @@ CREATE TABLE `team` (
   `win` int(11) DEFAULT NULL,
   `lose` int(11) DEFAULT NULL,
   `game_kelompok_idgame` int(11) NOT NULL,
-  `status` int(11) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL
+  `status` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `team`
 --
 
-INSERT INTO `team` (`idteam`, `nama_team`, `win`, `lose`, `game_kelompok_idgame`, `status`, `password`) VALUES
-(1, 'KECAMBAH', 5, 2, 1, 1, NULL),
-(2, 'GABIMARU', 5, 3, 2, 1, NULL),
-(3, 'Sarada', 0, 0, 3, 2, NULL),
-(5, 'halo', 0, 0, 1, 0, 'coba'),
-(6, 'marco', 0, 0, 4, 0, '123'),
-(7, 'coba', 0, 0, 4, 0, '123');
+INSERT INTO `team` (`idteam`, `nama_team`, `win`, `lose`, `game_kelompok_idgame`, `status`) VALUES
+(5, 'team1', 0, 0, 9, 1),
+(6, 'team2', 0, 0, 8, 1);
 
 --
 -- Indexes for dumped tables
@@ -193,6 +208,22 @@ INSERT INTO `team` (`idteam`, `nama_team`, `win`, `lose`, `game_kelompok_idgame`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `bracket_individu`
+--
+ALTER TABLE `bracket_individu`
+  ADD PRIMARY KEY (`idbracketIndiv`),
+  ADD KEY `fk_peserta_individu_has_peserta_individu_peserta_individu2_idx` (`idpeserta1`),
+  ADD KEY `fk_peserta_individu_has_peserta_individu_peserta_individu1_idx` (`idpeserta`);
+
+--
+-- Indexes for table `bracket_team`
+--
+ALTER TABLE `bracket_team`
+  ADD PRIMARY KEY (`idBracketTeam`),
+  ADD KEY `fk_team_has_team_team2_idx` (`team_idteam1`),
+  ADD KEY `fk_team_has_team_team1_idx` (`team_idteam`);
 
 --
 -- Indexes for table `game_individu`
@@ -232,22 +263,34 @@ ALTER TABLE `team`
 --
 
 --
+-- AUTO_INCREMENT for table `bracket_individu`
+--
+ALTER TABLE `bracket_individu`
+  MODIFY `idbracketIndiv` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `bracket_team`
+--
+ALTER TABLE `bracket_team`
+  MODIFY `idBracketTeam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `game_individu`
 --
 ALTER TABLE `game_individu`
-  MODIFY `idgame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idgame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `game_kelompok`
 --
 ALTER TABLE `game_kelompok`
-  MODIFY `idgame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idgame` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `peserta_individu`
 --
 ALTER TABLE `peserta_individu`
-  MODIFY `idpeserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `idpeserta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `peserta_kelompok`
@@ -259,11 +302,25 @@ ALTER TABLE `peserta_kelompok`
 -- AUTO_INCREMENT for table `team`
 --
 ALTER TABLE `team`
-  MODIFY `idteam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idteam` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `bracket_individu`
+--
+ALTER TABLE `bracket_individu`
+  ADD CONSTRAINT `fk_peserta_individu_has_peserta_individu_peserta_individu1` FOREIGN KEY (`idpeserta`) REFERENCES `peserta_individu` (`idpeserta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_peserta_individu_has_peserta_individu_peserta_individu2` FOREIGN KEY (`idpeserta1`) REFERENCES `peserta_individu` (`idpeserta`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `bracket_team`
+--
+ALTER TABLE `bracket_team`
+  ADD CONSTRAINT `fk_team_has_team_team1` FOREIGN KEY (`team_idteam`) REFERENCES `team` (`idteam`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_team_has_team_team2` FOREIGN KEY (`team_idteam1`) REFERENCES `team` (`idteam`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `peserta_individu`
